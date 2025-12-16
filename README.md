@@ -57,18 +57,16 @@ The project follows a clear separation between:
 
 ## 📂 Project Structure
 
-
-
 .
 ├── src/
-│ ├── init.py
-│ └── voice_commands.py
+│   ├── __init__.py
+│   └── voice_commands.py
 ├── tests/
-│ └── test_voice_commands.py
+│   └── test_voice_commands.py
 ├── features/
-│ ├── voice_commands.feature
-│ └── steps/
-│ └── voice_steps.py
+│   ├── voice_commands.feature
+│   └── steps/
+│       └── voice_steps.py
 ├── pyproject.toml
 ├── requirements.txt
 ├── Jenkinsfile
@@ -79,82 +77,66 @@ The project follows a clear separation between:
 
 ### 1) Create and activate a virtual environment
 
-```bash
 python -m venv .venv
 . .venv/bin/activate
 
-2) Install dependencies and the project
+### 2) Install dependencies and the project
+
 python -m pip install -U pip
 python -m pip install -r requirements.txt
 python -m pip install -e .
 
-🔍 Code Quality (Lint)
+## 🔍 Code Quality (Lint)
+
 ruff check .
 
-🧪 Run Unit Tests (pytest)
+## 🧪 Run Unit Tests (pytest)
+
 python -m pytest -q
 
-📊 Run Tests with Coverage
+## 📊 Run Tests with Coverage
+
 python -m pytest --cov=src --cov-report=term-missing --cov-report=xml
 
-
 This generates:
+- Console coverage report
+- coverage.xml file (used in CI)
 
-Console coverage report
+## 🥒 BDD (Cucumber-style) with Behave
 
-coverage.xml file (used in CI)
-
-🥒 BDD (Cucumber-style) with Behave
 python -m behave
-
 
 Feature files are located in features/ and step definitions in features/steps/.
 
-✅ Run Everything (quick command)
+## ✅ Run Everything (quick command)
+
 ruff check . && python -m pytest -q && python -m behave
 
-🤖 Continuous Integration (Jenkins)
+## 🤖 Continuous Integration (Jenkins)
 
 This repository includes a Jenkinsfile that defines a CI pipeline with the following stages:
 
-Create virtual environment and install dependencies
+- Create virtual environment and install dependencies
+- Run lint checks with ruff
+- Execute unit tests with pytest
+- Generate coverage report and fail the build if coverage drops below 90%
+- Publish JUnit test results and archive coverage artifacts
+- Run BDD scenarios with Behave (Cucumber-style)
 
-Run lint checks with ruff
+## 🧠 QA Concepts Practiced
 
-Execute unit tests with pytest
+- Test case design (positive, negative, edge cases)
+- Input normalization and validation
+- Automated testing with pytest
+- BDD using Gherkin + Behave (Cucumber-style)
+- Code quality enforcement (linting)
+- Test coverage analysis
+- CI pipeline with Jenkins
+- Debugging Python import and environment issues
 
-Generate coverage report and fail the build if coverage drops below 90%
+## 🚀 Future Improvements
 
-Publish JUnit test results and archive coverage artifacts
-
-Run BDD scenarios with Behave (Cucumber-style)
-
-This setup reflects a realistic QA automation pipeline used in professional environments.
-
-🧠 QA Concepts Practiced
-
-Test case design (positive, negative, edge cases)
-
-Input normalization and validation
-
-Automated testing with pytest
-
-BDD using Gherkin + Behave (Cucumber-style)
-
-Code quality enforcement (linting)
-
-Test coverage analysis
-
-CI pipeline with Jenkins
-
-Debugging Python import and environment issues
-
-🚀 Future Improvements
-
-Add tags for BDD (@smoke, @regression) and reporting
-
-More input normalization (punctuation, accents)
-
-Parametrized test data and additional edge cases
-
-API layer for integration testing (FastAPI)
+- Add tags for BDD (@smoke, @regression) and reporting
+- More input normalization (punctuation, accents)
+- Parametrized test data and additional edge cases
+- API layer for integration testing (FastAPI)
