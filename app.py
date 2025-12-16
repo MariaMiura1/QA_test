@@ -2,7 +2,8 @@ import streamlit as st
 from datetime import datetime
 
 # Import del SUT (como paquete instalado con pip install -e .)
-from voice_commands import process_command
+from src.voice_commands import process_command
+
 
 st.set_page_config(page_title="Voice Command QA Demo", page_icon="🎙️", layout="centered")
 
