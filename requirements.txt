@@ -2,3 +2,4 @@ streamlit
 pytest
 pytest-cov
 ruff
+behave
