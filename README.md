@@ -55,10 +55,6 @@ The project follows a clear separation between:
 ---
 ## 📂 Project Structure
 
-
-
-
-```
 .
 ├── src/
 │ ├── init.py
@@ -72,8 +68,10 @@ The project follows a clear separation between:
 ├── pyproject.toml
 ├── requirements.txt
 ├── Jenkinsfile
-└── README.md```
+└── README.md
 
+yaml
+Copiar código
 
 ---
 
@@ -84,22 +82,24 @@ The project follows a clear separation between:
 ```bash
 python -m venv .venv
 . .venv/bin/activate
-
 2) Install dependencies and the project
+bash
+Copiar código
 python -m pip install -U pip
 python -m pip install -r requirements.txt
 python -m pip install -e .
-
 🔍 Code Quality (Lint)
+bash
+Copiar código
 ruff check .
-
 🧪 Run Unit Tests (pytest)
+bash
+Copiar código
 python -m pytest -q
-
 📊 Run Tests with Coverage
+bash
+Copiar código
 python -m pytest --cov=src --cov-report=term-missing --cov-report=xml
-
-
 This generates:
 
 Console coverage report
@@ -107,19 +107,18 @@ Console coverage report
 coverage.xml file (used in CI)
 
 🥒 BDD (Cucumber-style) with Behave
-
 Run BDD scenarios:
 
+bash
+Copiar código
 python -m behave
-
-
 Feature files are located in features/ and step definitions in features/steps/.
 
 ✅ Run Everything (quick command)
+bash
+Copiar código
 ruff check . && python -m pytest -q && python -m behave
-
 🤖 Continuous Integration (Jenkins)
-
 This repository includes a Jenkinsfile that defines a CI pipeline with the following stages:
 
 Create virtual environment and install dependencies
@@ -137,7 +136,6 @@ Run BDD scenarios with Behave (Cucumber-style)
 This setup reflects a realistic QA automation pipeline used in professional environments.
 
 🧠 QA Concepts Practiced
-
 Test case design (positive, negative, edge cases)
 
 Input normalization and validation
@@ -155,7 +153,6 @@ CI pipeline with Jenkins
 Debugging Python import and environment issues
 
 🚀 Future Improvements
-
 Add tags for BDD (@smoke, @regression) and reporting
 
 More input normalization (punctuation, accents)
@@ -164,8 +161,3 @@ Parametrized test data and additional edge cases
 
 API layer for integration testing (FastAPI)
 
-📬 Contact
-
-This project was created for learning and portfolio purposes.
-
-Feel free to reach out to discuss QA practices, test automation, or CI/CD pipelines.
