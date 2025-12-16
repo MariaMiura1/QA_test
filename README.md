@@ -53,11 +53,12 @@ The project follows a clear separation between:
 - **BDD features** (`features/`)
 
 ---
-
 ## 📂 Project Structure
 
 
 
+
+```
 .
 ├── src/
 │ ├── init.py
@@ -71,7 +72,7 @@ The project follows a clear separation between:
 ├── pyproject.toml
 ├── requirements.txt
 ├── Jenkinsfile
-└── README.md
+└── README.md```
 
 
 ---
