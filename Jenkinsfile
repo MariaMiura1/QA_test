@@ -24,10 +24,7 @@ pipeline {
     stage('Tests + Coverage') {
       steps {
         sh '. .venv/bin/activate && mkdir -p reports'
-        sh '. .venv/bin/activate && python3 -m pytest -q ' +
-           '--junitxml=reports/junit.xml ' +
-           '--cov=src --cov-report=term-missing --cov-report=xml ' +
-           '--cov-fail-under=90'
+        sh '. .venv/bin/activate && python3 -m pytest -q --junitxml=reports/junit.xml --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90'
       }
       post {
         always {
@@ -36,10 +33,12 @@ pipeline {
         }
       }
     }
-  }
-}
-stage('BDD (Behave)') {
-  steps {
-    sh '. .venv/bin/activate && python3 -m behave'
+
+    stage('BDD (Behave)') {
+      steps {
+        sh '. .venv/bin/activate && python3 -m pip install -r requirements.txt'
+        sh '. .venv/bin/activate && python3 -m behave'
+      }
+    }
   }
 }
