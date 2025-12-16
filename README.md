@@ -56,6 +56,7 @@ The project follows a clear separation between:
 
 ## 📂 Project Structure
 
+```
 .
 ├── src/
 │   ├── __init__.py
@@ -70,6 +71,8 @@ The project follows a clear separation between:
 ├── requirements.txt
 ├── Jenkinsfile
 └── README.md
+```
+
 
 
 ## ▶️ How to Run Locally (Linux / Codespaces)
