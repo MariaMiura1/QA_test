@@ -8,5 +8,8 @@ VALID_COMMANDS = {
 }
 
 def process_command(command: str) -> str:
+    if not isinstance(command, str):
+        return "Comando no reconocido"
+
     command = command.lower().strip()
     return VALID_COMMANDS.get(command, "Comando no reconocido")

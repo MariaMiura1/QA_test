@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+src/__init__.py
+src/voice_commands.py
+src/voice_command_qa.egg-info/PKG-INFO
+src/voice_command_qa.egg-info/SOURCES.txt
+src/voice_command_qa.egg-info/dependency_links.txt
+src/voice_command_qa.egg-info/top_level.txt
+tests/test_voice_commands.py

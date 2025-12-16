@@ -1,89 +1,147 @@
-# QA_test
-
-Repositorio para practicar QA, pytest y Jenkins.
 # Voice Command QA Practice
 
-This repository contains a simple Python module that simulates how a virtual assistant processes voice commands in Spanish.  
-The goal of this project is to practice software testing, test case design, error analysis, and basic automation using Python and pytest — all highly relevant skills for QA roles.
+This repository contains a simple Python project designed to practice **software testing and QA automation** skills using `pytest`, code quality checks, and a CI pipeline with **Jenkins**.
+
+The system under test (SUT) simulates how a virtual assistant processes **voice commands in Spanish** and returns predefined responses.
+
+This project focuses on **test design, edge cases, automation, and CI**, rather than complex business logic.
 
 ---
 
 ## 🎯 Project Overview
 
-The system under test (SUT) is a function called `process_command`.  
-It receives a user command as text (simulating a voice transcription) and returns the expected response from the device.
+The core function, `process_command`, receives a text command (simulating a voice transcription) and returns the expected device response.
 
-Example commands:
-- `encender` → “Dispositivo encendido”
-- `apagar` → “Dispositivo apagado”
-- `subir volumen`
-- `bajar volumen`
-- `silencio`
-- `ayuda`
+### Supported commands
 
-If the command is not recognized, the system must return:
+| Command          | Response                         |
+|------------------|----------------------------------|
+| encender         | Dispositivo encendido            |
+| apagar           | Dispositivo apagado              |
+| subir volumen    | Volumen aumentado                |
+| bajar volumen    | Volumen reducido                 |
+| silencio         | Modo silencio activado            |
+| ayuda            | List of available commands       |
 
-This behavior is covered by automated tests in the `tests` folder.
+Any unknown, partial, empty, or invalid input returns:
+
+Comando no reconocido
+
+yaml
+Copiar código
 
 ---
 
 ## 🧪 Testing Scope
 
-The pytest suite includes the following test scenarios:
+Automated tests are written with **pytest** and cover:
 
-### ✔ Functional Tests
-- Accept valid commands  
-- Trim extra spaces  
-- Handle uppercase inputs  
-- Reject invalid commands  
-- Reject partial or incomplete commands  
+- Valid commands
+- Case-insensitive input
+- Leading and trailing spaces
+- Invalid and partial commands
+- Edge cases (e.g. `None` input)
 
-These tests simulate realistic user input variations, which are common in voice assistants and smart devices.
-
----
-
-## 🛠 Technologies Used
-
-- **Python 3**
-- **pytest** (for test automation)
-- Linux-based development environment (GitHub Codespaces)
+The project follows a clear separation between:
+- **Source code** (`src/`)
+- **Test code** (`tests/`)
 
 ---
 
 ## 📂 Project Structure
 
-🐞 Example of Debugging (Real QA Scenario)
+.
+├── src/
+│ ├── init.py
+│ └── voice_commands.py
+├── tests/
+│ └── test_voice_commands.py
+├── pyproject.toml
+├── requirements.txt
+├── Jenkinsfile
+└── README.md
 
-During development, multiple issues were intentionally introduced and diagnosed:
+yaml
+Copiar código
 
-1. ModuleNotFoundError: No module named 'src'
+---
 
-Cause: Python did not recognize the src folder as a package.
-Fix: Added __init__.py and updated test file to include the project root in sys.path.
+## ▶️ How to Run Locally (Linux / Codespaces)
 
-2. Circular import error
+### 1. Create and activate a virtual environment
 
-Cause: The module was importing itself during initialization.
-Fix: Removed unnecessary import inside voice_commands.py.
+```bash
+python -m venv .venv
+. .venv/bin/activate
+2. Install dependencies and the project
+bash
+Copiar código
+python -m pip install -U pip
+python -m pip install -r requirements.txt
+python -m pip install -e .
+🔍 Code Quality (Lint)
+bash
+Copiar código
+ruff check .
+🧪 Run Tests
+bash
+Copiar código
+python -m pytest -q
+📊 Run Tests with Coverage
+bash
+Copiar código
+python -m pytest --cov=src --cov-report=term-missing --cov-report=xml
+This generates:
 
-This demonstrates common debugging patterns in QA automation and Python environments.
+Console coverage report
 
-📘 Purpose of This Project
+coverage.xml file (used in CI)
 
-This project was created to practice:
+Current coverage: 100%
 
-Requirement analysis
+🤖 Continuous Integration (Jenkins)
+This repository includes a Jenkinsfile that defines a CI pipeline with the following stages:
 
-Manual and automated test design
+Create virtual environment and install dependencies
 
-Error detection and troubleshooting
+Run lint checks with ruff
 
-Python scripting for QA
+Execute unit tests with pytest
 
-Working with test automation tools (pytest, CI-ready structure)
+Generate coverage report
 
-It serves as a hands-on example of how to approach testing functionality for virtual assistants, smart devices, or command-processing systems.
+Fail the build if coverage drops below 90%
+
+Publish JUnit test results
+
+Archive coverage artifacts
+
+This setup reflects a realistic QA automation pipeline used in professional environments.
+
+🧠 QA Concepts Practiced
+Test case design (positive, negative, edge cases)
+
+Input normalization and validation
+
+Automated testing with pytest
+
+Code quality enforcement (linting)
+
+Test coverage analysis
+
+CI pipeline with Jenkins
+
+Debugging Python import and environment issues
+
+🚀 Future Improvements
+BDD tests using Gherkin (Cucumber-style)
+
+More input normalization (punctuation, accents)
+
+Test data parametrization
+
+API layer for integration testing
 
 📬 Contact
-
-If you’d like to discuss this project or QA practices, feel free to connect.
+This project was created for learning and portfolio purposes.
+Feel free to reach out to discuss QA practices, test automation, or CI/CD pipelines.

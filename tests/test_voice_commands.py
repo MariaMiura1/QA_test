@@ -1,10 +1,4 @@
-import os
-import sys
-
-# Añado la carpeta raíz del proyecto al sys.path para que Python encuentre 'src'
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
-from src.voice_commands import process_command
+from voice_commands import process_command
 
 
 def test_valid_command():
@@ -25,3 +19,7 @@ def test_invalid_command():
 
 def test_partial_command():
     assert process_command("subir") == "Comando no reconocido"
+
+
+def test_none_input():
+    assert process_command(None) == "Comando no reconocido"
