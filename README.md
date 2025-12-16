@@ -6,7 +6,6 @@ The system under test (SUT) simulates how a virtual assistant processes **voice 
 
 This project focuses on **test design, edge cases, automation, and CI**, rather than complex business logic.
 
----
 
 ## 🎯 Project Overview
 
@@ -30,7 +29,7 @@ Any unknown, partial, empty, or invalid input returns:
 Comando no reconocido
 
 
----
+
 
 ## 🧪 Testing Scope
 
@@ -53,7 +52,7 @@ The project follows a clear separation between:
 - **BDD features** (`features/`)
 
 ---
-```
+
 
 ## 📂 Project Structure
 
